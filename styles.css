@@ -1,0 +1,234 @@
+/* 基本的なリセット */
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.min-h-screen {
+    min-height: 100vh;
+}
+
+.bg-gradient-to-br {
+    background: linear-gradient(to bottom right, #4299e1, #9f7aea);
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.p-4 {
+    padding: 1rem;
+}
+
+.card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.card-title {
+    margin-bottom: 0;
+}
+
+.card-content {
+    padding: 1rem;
+}
+
+.input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 0.375rem;
+    font-size: 1rem;
+}
+
+.button {
+    display: inline-block;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.bg-blue-600 {
+    background-color: #3182ce;
+}
+
+.bg-blue-600:hover {
+    background-color: #2b6cb0;
+}
+
+.text-white {
+    color: white;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.py-3 {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+.px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.rounded-md {
+    border-radius: 0.375rem;
+}
+
+.transition {
+    transition: all 0.3s ease-in-out;
+}
+
+.mt-6 {
+    margin-top: 1.5rem;
+}
+
+.mt-8 {
+    margin-top: 2rem;
+}
+
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+}
+
+.alert.destructive {
+    background-color: #fed7d7;
+    color: #c53030;
+}
+
+.tabs-list {
+    display: flex;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 1rem;
+}
+
+.tabs-trigger {
+    flex: 1;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    background-color: #f7fafc;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.tabs-trigger:hover {
+    background-color: #edf2f7;
+}
+
+.tabs-content {
+    padding: 1rem;
+}
+
+.list-disc {
+    list-style-type: disc;
+}
+
+.list-inside {
+    padding-left: 1.5rem;
+}
+
+.button.outline {
+    border: 1px solid #cbd5e0;
+    background-color: transparent;
+    color: #4a5568;
+}
+
+.button.outline:hover {
+    background-color: #f7fafc;
+}
+
+/* Table styles */
+.table-auto {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-auto th, .table-auto td {
+    border: 1px solid #cbd5e0;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+.table-auto th {
+    background-color: #f7fafc;
+}
+
+.table-auto td {
+    background-color: #ffffff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .card-header {
+        text-align: center;
+    }
+
+    .tabs-list {
+        flex-direction: column;
+        font-size: 1rem;
+    }
+
+    .tabs-trigger {
+        padding: 1rem;
+    }
+
+    .input {
+        font-size: 1rem;
+    }
+
+    .button {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+/* チェックマークボタンのスタイル */
+.button.checkmark {
+    background-color: #38a169; /* 緑色 */
+    padding: 0.5rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+}
+
+.button.checkmark:hover {
+    background-color: #2f855a; /* 濃い緑色 */
+}

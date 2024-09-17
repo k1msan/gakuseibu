@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生部役員掲示板</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app" class="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
+        <!-- ログインフォーム -->
+        <div id="login-card" class="card w-full max-w-xl bg-white shadow-2xl overflow-hidden">
+            <div class="flex flex-col">
+                <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2F18BA40-E360-49B2-A35D-C34DD3E5259C-6cdcEqS8wq4tR5s1I5gK8DYk3a9elD.jpg"
+                    alt="学生部役員集合写真"
+                    class="w-full h-48 object-cover"
+                />
+                <div class="p-4">
+                    <div class="card-header space-y-1 text-center">
+                        <h2 class="card-title text-2xl font-bold text-gray-800">
+                            学生部役員掲示板
+                        </h2>
+                    </div>
+                    <div class="card-content">
+                        <div id="error-message" class="alert destructive mb-4" style="display: none;">
+                            <strong>エラー</strong>
+                            <p id="error-text"></p>
+                        </div>
+                        <form id="login-form" class="space-y-4">
+                            <div class="space-y-2">
+                                <label for="username" class="text-sm font-medium text-gray-700">ユーザー名</label>
+                                <input
+                                    id="username"
+                                    type="text"
+                                    placeholder="ユーザー名を入力"
+                                    class="input w-full px-3 py-2 border rounded-md"
+                                />
+                            </div>
+                            <div class="space-y-2">
+                                <label for="password" class="text-sm font-medium text-gray-700">パスワード</label>
+                                <input
+                                    id="password"
+                                    type="password"
+                                    placeholder="パスワードを入力"
+                                    class="input w-full px-3 py-2 border rounded-md"
+                                />
+                            </div>
+                            <button type="submit" class="button w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-300 ease-in-out">
+                                ログイン
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ダッシュボード -->
+        <div id="dashboard-card" class="card w-full max-w-6xl bg-white shadow-2xl mt-8" style="display: none;">
+            <div class="card-header">
+                <h2 class="card-title text-3xl font-bold text-center text-gray-800">
+                    学生部役員掲示板
+                </h2>
+            </div>
+            <div class="card-content p-6">
+                <!-- 検索ボックスの追加 -->
+                <div class="mb-6">
+                    <input type="text" id="search-input" class="input w-full px-4 py-3 border rounded-md" placeholder="検索...">
+                </div>
+                
+                <div class="tabs">
+                    <div class="tabs-list grid grid-cols-3">
+                        <button class="tabs-trigger" data-target="announcements">連絡事項</button>
+                        <button class="tabs-trigger" data-target="minutes">議事録</button>
+                        <button class="tabs-trigger" data-target="tasks">タスク</button>
+                    </div>
+                    <div class="tabs-content mt-6" id="announcements">
+                        <h3 class="text-2xl font-semibold mb-4">連絡事項</h3>
+                        <form id="announcement-form" class="mb-6">
+                            <input type="text" id="announcement-title" class="input w-full px-4 py-3 border rounded-md" placeholder="タイトルを入力" />
+                            <textarea id="announcement-input" class="input w-full px-4 py-3 border rounded-md mt-4" placeholder="連絡事項を入力"></textarea>
+                            <button type="submit" class="button bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md mt-4">追加</button>
+                        </form>
+                        <ul id="announcement-list" class="list-disc list-inside mb-6"></ul>
+
+                        <h4 class="text-xl font-semibold">連絡事項一覧</h4>
+                        <table id="announcement-table" class="table-auto w-full mt-4">
+                            <thead>
+                                <tr>
+                                    <th class="px-4 py-2 border">タイトル</th>
+                                    <th class="px-4 py-2 border">内容</th>
+                                    <th class="px-4 py-2 border">ユーザー名</th>
+                                    <th class="px-4 py-2 border">日付</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <div class="tabs-content mt-6" id="minutes" style="display: none;">
+                        <h3 class="text-2xl font-semibold mb-4">議事録</h3>
+                        <form id="minutes-form" class="mb-6">
+                            <input type="text" id="minutes-title" class="input w-full px-4 py-3 border rounded-md" placeholder="タイトルを入力" />
+                            <textarea id="minutes-input" class="input w-full px-4 py-3 border rounded-md mt-4" placeholder="議事録を入力"></textarea>
+                            <button type="submit" class="button bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md mt-4">追加</button>
+                        </form>
+                        <ul id="minutes-list" class="list-disc list-inside mb-6"></ul>
+
+                        <h4 class="text-xl font-semibold">議事録一覧</h4>
+                        <table id="minutes-table" class="table-auto w-full mt-4">
+                            <thead>
+                                <tr>
+                                    <th class="px-4 py-2 border">タイトル</th>
+                                    <th class="px-4 py-2 border">内容</th>
+                                    <th class="px-4 py-2 border">ユーザー名</th>
+                                    <th class="px-4 py-2 border">日付</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+                    <div class="tabs-content mt-6" id="tasks" style="display: none;">
+                        <h3 class="text-2xl font-semibold mb-4">タスク</h3>
+                        <form id="task-form" class="mb-6">
+                            <input type="text" id="task-title" class="input w-full px-4 py-3 border rounded-md" placeholder="タイトルを入力" />
+                            <textarea id="task-input" class="input w-full px-4 py-3 border rounded-md mt-4" placeholder="タスクを入力"></textarea>
+                            <input type="date" id="task-deadline" class="input w-full px-4 py-3 border rounded-md mt-4" />
+                            <button type="submit" class="button bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-md mt-4">追加</button>
+                        </form>
+                        <div class="mb-6">
+                            <label for="month-select" class="block text-lg font-semibold mb-2">月で絞り込む</label>
+                            <input type="month" id="month-select" class="input w-full px-4 py-3 border rounded-md">
+                        </div>
+                        <h4 class="text-xl font-semibold">未完了タスク</h4>
+                        <ul id="task-list-pending" class="list-disc list-inside mb-6"></ul>
+                        <h4 class="text-xl font-semibold">完了済みタスク</h4>
+                        <ul id="task-list-completed" class="list-disc list-inside"></ul>
+                    </div>
+                </div>
+                <div class="mt-8 text-center">
+                    <button id="logout-button" class="button outline py-3 px-6">ログアウト</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
